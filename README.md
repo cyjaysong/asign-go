@@ -1,14 +1,14 @@
-# 智付SDK V2
+# 爱签SDK V2
 
 ### 初始化
 
 ```
-accessId := "3011"
+appId := "28666666"
 appPrivateKeyPath := "../config/Test_appPrivateKey.cer"
 asignPublicKeyPath := "../config/Test_asignPublicKey.cer"
 prodEnv := false // prodEnv 为true请求爱签的生产环境，为false请求爱签的测试环境，请悉知
 devMode := false // devMode 为true会打印接口请求和响应内容
-client, err := globebill.NewClient(accessId, appPrivateKeyPath, asignPublicKeyPath, prodEnv, devMode)
+client, err := asign.NewClient(appId, appPrivateKeyPath, asignPublicKeyPath, prodEnv, devMode)
 ```
 
 ### 打赏
