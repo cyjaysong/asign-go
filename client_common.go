@@ -4,7 +4,6 @@ import (
 	"context"
 	"crypto/md5"
 	"encoding/hex"
-	"errors"
 	"github.com/bytedance/sonic"
 	"github.com/deatil/go-cryptobin/cryptobin/rsa"
 	"strconv"
@@ -25,14 +24,7 @@ func (the Client) post(ctx context.Context, path string, reqBody, resBody any) (
 	if err != nil {
 		return err
 	}
-	var bytes []byte
-	if bytes, err = response.ToBytes(); err != nil {
-		return err
-	}
-	if !the.Sha1WithRsaVerify(bytes) {
-		return errors.New("响应内容验签失败")
-	}
-	return sonic.Unmarshal(bytes, resBody)
+	return response.Unmarshal(resBody)
 }
 
 // Sha1WithRsaSign 签名
