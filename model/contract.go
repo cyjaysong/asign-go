@@ -27,12 +27,12 @@ type ContractCreateReqBody struct {
 }
 
 type ContractCreateTemplate struct {
-	TemplateNo    string                       `json:"templateNo" dc:"合同模板编号"`
-	FileName      string                       `json:"fileName" dc:"文件名称(自定义模板文件的展示名称,传值不包含文件后缀)"`
-	ContractNo    string                       `json:"contractNo" dc:"合同编号(此处可传已完成签署的合同编号,实现追加签章的场景)"`
-	FillData      map[string]string            `json:"fillData" dc:"单行文本、多行文本、日期、身份证类型参数填充"`
-	ComponentData []*ContractTemplateComponent `json:"componentData" dc:"单选、复选、勾选、下拉选择、图片类型参数填充"`
-	TableDatas    []*ContractTemplateTable     `json:"tableDatas" dc:"表格填充数据"`
+	TemplateNo    string                       `json:"templateNo,omitempty" dc:"合同模板编号"`
+	FileName      string                       `json:"fileName,omitempty" dc:"文件名称(自定义模板文件的展示名称,传值不包含文件后缀)"`
+	ContractNo    string                       `json:"contractNo,omitempty" dc:"合同编号(此处可传已完成签署的合同编号,实现追加签章的场景)"`
+	FillData      map[string]string            `json:"fillData,omitempty" dc:"单行文本、多行文本、日期、身份证类型参数填充"`
+	ComponentData []*ContractTemplateComponent `json:"componentData,omitempty" dc:"单选、复选、勾选、下拉选择、图片类型参数填充"`
+	TableDatas    []*ContractTemplateTable     `json:"tableDatas,omitempty" dc:"表格填充数据"`
 }
 
 type ContractTemplateComponent struct {
@@ -50,8 +50,8 @@ type ContractOption struct {
 }
 
 type ContractTemplateTable struct {
-	Keyword    string              `json:"keyword" dc:"表名称"`
-	TableDatas []*ContractTableRow `json:"tableDatas,omitempty" dc:"表格填充数据"`
+	Keyword   string              `json:"keyword" dc:"表名称"`
+	RowValues []*ContractTableRow `json:"rowValues,omitempty" dc:"表格填充数据"`
 }
 
 type ContractTableRow struct {
