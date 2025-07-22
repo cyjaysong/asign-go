@@ -3,7 +3,7 @@ package asign
 import (
 	"context"
 	"crypto/md5"
-	"encoding/hex"
+	"fmt"
 	"github.com/bytedance/sonic"
 	"github.com/deatil/go-cryptobin/cryptobin/rsa"
 	"strconv"
@@ -29,7 +29,7 @@ func (the Client) post(ctx context.Context, path string, reqBody, resBody any) (
 
 // Sha1WithRsaSign 签名
 func (the Client) Sha1WithRsaSign(bizDataStr string, bizDataBytes []byte) (sign, timestamp string) {
-	dataMd5 := hex.EncodeToString(md5.New().Sum(bizDataBytes))
+	dataMd5 := fmt.Sprintf("%x", md5.Sum(bizDataBytes))
 	timestamp = strconv.FormatInt(time.Now().Add(time.Minute*10).UnixMilli(), 10)
 	sign = bizDataStr + dataMd5 + the.AppId + timestamp
 	obj := rsa.New().FromPrivateKey(the.appPrivateKey).SetSignHash("SHA1")

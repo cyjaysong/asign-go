@@ -11,7 +11,6 @@ const prodBaseUrl = "https://oapi.asign.cn"
 
 type Client struct {
 	reqClient      *reqclient.Client
-	Host           string // API HOST
 	AppId          string // APPID
 	appPrivateKey  []byte // 应用私钥
 	asignPublicKey []byte // 爱签公钥
@@ -19,7 +18,7 @@ type Client struct {
 	devMode        bool   // 是否调试模式
 }
 
-func NewClient(host, appId, appPrivateKeyPath, asignPublicKeyPath string, prodEnv, devMode bool) (client *Client, err error) {
+func NewClient(appId, appPrivateKeyPath, asignPublicKeyPath string, prodEnv, devMode bool) (client *Client, err error) {
 	privateBytes, err := os.ReadFile(appPrivateKeyPath)
 	if err != nil {
 		return nil, err
@@ -29,8 +28,7 @@ func NewClient(host, appId, appPrivateKeyPath, asignPublicKeyPath string, prodEn
 		return nil, err
 	}
 
-	client = &Client{Host: host, AppId: appId, appPrivateKey: privateBytes, asignPublicKey: publicFileBytes,
-		prodEnv: prodEnv, devMode: devMode}
+	client = &Client{AppId: appId, appPrivateKey: privateBytes, asignPublicKey: publicFileBytes, prodEnv: prodEnv, devMode: devMode}
 	client.reqClient = reqclient.C().SetCommonRetryCount(1)
 	client.reqClient.SetIdleConnTimeout(time.Second * 3)
 	client.reqClient.SetTimeout(time.Second * 10)

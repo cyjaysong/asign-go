@@ -2,11 +2,11 @@ module github.com/cyjaysong/asign-go
 
 go 1.22.0
 
-
 require (
 	github.com/bytedance/sonic v1.13.3
 	github.com/deatil/go-cryptobin v1.1.1005
 	github.com/imroc/req/v3 v3.50.0
+	github.com/matoous/go-nanoid/v2 v2.1.0
 )
 
 require (
