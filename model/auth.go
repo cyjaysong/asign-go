@@ -23,7 +23,7 @@ type AuthCaptchaVerifyResBody struct {
 
 // 实名认证流水号查询 Req https://preweb.asign.cn/platform/openDoc/docDetail?mid=getSerialNo
 type GetAuthSerialNoReqBody struct {
-	UserType int    `json:"userType" dc:"认证主体类型：1.企业，2.个人"`
+	UserType int    `json:"userType,omitempty" dc:"认证主体类型：1.企业，2.个人"`
 	UserName string `json:"userName,omitempty" dc:"姓名 或 企业名称"`
 	IdNo     string `json:"idNo,omitempty" dc:"身份证 或 企业证件号"`
 }

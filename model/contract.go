@@ -39,7 +39,7 @@ type ContractTemplateComponent struct {
 	Type         int               `json:"type" dc:"组件类型:2:单选,3:勾选,9:复选,11:图片,16:下拉选择"`
 	Keyword      string            `json:"keyword" dc:"参数名称"`
 	DefaultValue string            `json:"defaultValue,omitempty" dc:"当填充类型为勾选(type=3)时填写:Yes:选中 Off:不选中"`
-	Options      []*ContractOption `json:"options" dc:"选项内容"`
+	Options      []*ContractOption `json:"options,omitempty" dc:"选项内容"`
 	ImageBytes   []byte            `json:"imageByte,omitempty" dc:"图片资源Bytes"`
 	ImageBase64  string            `json:"imageBase64,omitempty" dc:"图片资源Base64"`
 }

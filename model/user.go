@@ -143,8 +143,8 @@ type ModifyCompanyInfoResBody string // 当修改企业名称时，默认会生�
 // 修改个人信息 Req https://preweb.asign.cn/platform/openDoc/docDetail?mid=modifyUserName
 type ModifyUserNameReqBody struct {
 	Account      string `json:"account" dc:"用户唯一识别码"`
-	Name         string `json:"name,omitempty" dc:"法人名称（修改法人信息时必传）"`
-	IdentifyType int    `json:"identifyType,omitempty" dc:"认证类型：2：运营商三要素认证; 3：银行卡四要素认证"`
+	Name         string `json:"name" dc:"姓名"`
+	IdentifyType int    `json:"identifyType" dc:"认证类型：2：运营商三要素认证; 3：银行卡四要素认证"`
 	Mobile       string `json:"mobile,omitempty" dc:"用户手机号（identifyType=2时必传）"`
 	BankCard     string `json:"bankCard,omitempty" dc:"用户银联卡号（identifyType=3时必传）"`
 }
