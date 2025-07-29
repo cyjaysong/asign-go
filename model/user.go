@@ -128,6 +128,15 @@ type UserModifyMobileByCodeReqBody struct {
 // 用户绑定手机号(验证码方案) Res
 type UserModifyMobileByCodeResBody struct{}
 
+// 修改用户手机号(平台方自行认证模式) Req https://preweb.asign.cn/platform/openDoc/docDetail?mid=updateMobile
+type UserUpdateMobileReqBody struct {
+	Account string `json:"account" dc:"用户唯一识别码"`
+	Mobile  string `json:"mobile" dc:"用户新手机号"`
+}
+
+// 修改用户手机号(平台方自行认证模式) Res
+type UserUpdateMobileResBody struct{}
+
 // 修改企业信息 Req https://preweb.asign.cn/platform/openDoc/docDetail?mid=modifyCompanyInfo
 type ModifyCompanyInfoReqBody struct {
 	Account     string `json:"account" dc:"用户唯一识别码"`

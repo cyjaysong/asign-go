@@ -45,7 +45,7 @@ func (the Client) GetCompUser(ctx context.Context, req *model.GetCompUserReqBody
 	return
 }
 
-// 用户绑定手机号(运营商三要素方案)
+// 修改用户手机号(运营商三要素方案)
 func (the Client) UserModifyMobile(ctx context.Context, req *model.UserModifyMobileReqBody) (res *model.BaseRes[model.UserModifyMobileResBody], err error) {
 	path := "/user/modifyMobile"
 	res = new(model.BaseRes[model.UserModifyMobileResBody])
@@ -55,7 +55,7 @@ func (the Client) UserModifyMobile(ctx context.Context, req *model.UserModifyMob
 	return
 }
 
-// 发送用户绑定手机号验证码
+// 发送修改用户手机号验证码
 func (the Client) SendUserModifyMobileCode(ctx context.Context, req *model.SendUserModifyMobileCodeReqBody) (res *model.BaseRes[model.SendUserModifyMobileCodeResBody], err error) {
 	path := "/user/sendCode"
 	res = new(model.BaseRes[model.SendUserModifyMobileCodeResBody])
@@ -65,10 +65,20 @@ func (the Client) SendUserModifyMobileCode(ctx context.Context, req *model.SendU
 	return
 }
 
-// 用户绑定手机号(验证码方案)
+// 修改用户手机号(验证码方案)
 func (the Client) UserModifyMobileByCode(ctx context.Context, req *model.UserModifyMobileByCodeReqBody) (res *model.BaseRes[model.UserModifyMobileByCodeResBody], err error) {
 	path := "/user/modifyMobileByCode"
 	res = new(model.BaseRes[model.UserModifyMobileByCodeResBody])
+	if err = the.post(ctx, path, req, res); err != nil {
+		return nil, err
+	}
+	return
+}
+
+// 修改用户手机号(平台方自行认证模式)
+func (the Client) UserUpdateMobile(ctx context.Context, req *model.UserUpdateMobileReqBody) (res *model.BaseRes[model.UserUpdateMobileResBody], err error) {
+	path := "/user/updateMobile"
+	res = new(model.BaseRes[model.UserUpdateMobileResBody])
 	if err = the.post(ctx, path, req, res); err != nil {
 		return nil, err
 	}
