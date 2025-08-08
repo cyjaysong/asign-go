@@ -18,6 +18,9 @@ func (the Client) AddPersonalUserV2(ctx context.Context, req *model.AddPersonalU
 // 添加企业用户（V2）
 func (the Client) AddEnterpriseUserV2(ctx context.Context, req *model.AddEnterpriseUserV2ReqBody) (res *model.BaseRes[model.AddEnterpriseUserV2ResBody], err error) {
 	path := "/v2/user/addEnterpriseUser"
+	if req.CompanyName == "*" {
+		req.CompanyName = req.CreditCode
+	}
 	res = new(model.BaseRes[model.AddEnterpriseUserV2ResBody])
 	if err = the.post(ctx, path, req, res); err != nil {
 		return nil, err
@@ -88,6 +91,9 @@ func (the Client) UserUpdateMobile(ctx context.Context, req *model.UserUpdateMob
 // 修改企业信息
 func (the Client) ModifyCompanyInfo(ctx context.Context, req *model.ModifyCompanyInfoReqBody) (res *model.BaseRes[model.ModifyCompanyInfoResBody], err error) {
 	path := "/user/modifyCompanyInfo"
+	if req.CompanyName == "*" {
+		req.CompanyName = ""
+	}
 	res = new(model.BaseRes[model.ModifyCompanyInfoResBody])
 	if err = the.post(ctx, path, req, res); err != nil {
 		return nil, err
@@ -95,7 +101,7 @@ func (the Client) ModifyCompanyInfo(ctx context.Context, req *model.ModifyCompan
 	return
 }
 
-// 修改企业信息
+// 修改用户信息
 func (the Client) ModifyUserName(ctx context.Context, req *model.ModifyUserNameReqBody) (res *model.BaseRes[model.ModifyUserNameResBody], err error) {
 	path := "/v2/user/modifyUserName"
 	res = new(model.BaseRes[model.ModifyUserNameResBody])

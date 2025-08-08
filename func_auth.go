@@ -58,6 +58,9 @@ func (the Client) AuthPersonMobile3(ctx context.Context, req *model.AuthPersonMo
 // 企业法人运营商三要素认证
 func (the Client) AuthCompanyMobile3(ctx context.Context, req *model.AuthCompanyMobile3ReqBody) (res *model.BaseRes[model.AuthCompanyMobile3ResBody], err error) {
 	path := "/auth/company/mobile3"
+	if req.CompanyName == "*" {
+		req.CompanyName = req.CreditCode
+	}
 	res = new(model.BaseRes[model.AuthCompanyMobile3ResBody])
 	if err = the.post(ctx, path, req, res); err != nil {
 		return nil, err
