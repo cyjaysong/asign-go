@@ -79,7 +79,7 @@ type ContractAddSigner struct {
 	Account                  string                  `json:"account" dc:"用户唯一识别码"`
 	SignType                 int                     `json:"signType,omitempty" dc:"签约方式:2:无感知签约(需要开通权限)3:有感知签约"`
 	SealNo                   string                  `json:"sealNo,omitempty" dc:"印章编号,若不传值,则由当前主体的默认印章进行签署"`
-	AuthSignAccount          int                     `json:"authSignAccount,omitempty" dc:"指定授权签约用户"`
+	AuthSignAccount          string                  `json:"authSignAccount,omitempty" dc:"指定授权签约用户"`
 	NoticeMobile             string                  `json:"noticeMobile,omitempty" dc:"通知手机号"`
 	SignOrder                string                  `json:"signOrder,omitempty" dc:"使用顺序签约时签约顺序编号(从1开始),无序签约都为1"`
 	IsNotice                 int                     `json:"isNotice,omitempty" dc:"是否接收合同签署链接的短信通知"`
