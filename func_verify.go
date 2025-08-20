@@ -80,3 +80,13 @@ func (the Client) VerifyCompanyEnt4(ctx context.Context, req *model.VerifyCompan
 	}
 	return
 }
+
+// 企业工商数据查询
+func (the Client) EnterpriseInfo(ctx context.Context, req *model.EnterpriseInfoReqBody) (res *model.BaseRes[model.EnterpriseInfoResBody], err error) {
+	path := "/user/enterprise/info"
+	res = new(model.BaseRes[model.EnterpriseInfoResBody])
+	if err = the.post(ctx, path, req, res); err != nil {
+		return nil, err
+	}
+	return
+}
