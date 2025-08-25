@@ -59,7 +59,7 @@ func (the Client) VerifyPersonBank4(ctx context.Context, req *model.VerifyPerson
 func (the Client) VerifyCompanyEnt3(ctx context.Context, req *model.VerifyCompanyEnt3ReqBody) (res *model.BaseRes[model.VerifyCompanyResBody], err error) {
 	path := "/verify/company/bizInfo"
 	if req.CompanyName == "*" {
-		req.CompanyName = req.CreditCode
+		req.CompanyName = req.RealName
 	}
 	res = new(model.BaseRes[model.VerifyCompanyResBody])
 	if err = the.post(ctx, path, req, res); err != nil {
