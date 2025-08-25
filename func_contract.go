@@ -25,6 +25,16 @@ func (the Client) ContractAddSigner(ctx context.Context, req *model.ContractAddS
 	return
 }
 
+// 合同撤销
+func (the Client) WithdrawContract(ctx context.Context, req *model.WithdrawContractReqBody) (res *model.BaseRes[model.WithdrawContractResBody], err error) {
+	path := "/contract/withdraw"
+	res = new(model.BaseRes[model.WithdrawContractResBody])
+	if err = the.post(ctx, path, req, res); err != nil {
+		return nil, err
+	}
+	return
+}
+
 // 查询合同状态
 func (the Client) GetContractStatus(ctx context.Context, req *model.GetContractStatusReqBody) (res *model.BaseRes[model.GetContractStatusResBody], err error) {
 	path := "/contract/status"

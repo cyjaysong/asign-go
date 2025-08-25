@@ -182,6 +182,14 @@ type ContractViewHisItem struct {
 	Opened     int    `json:"opened" dc:"是否签署,1:已签署,0:未签署"`
 }
 
+// 合同撤销 Req https://web.asign.cn/platform/openDoc/docDetail?mid=withdraw
+type WithdrawContractReqBody struct {
+	ContractNo       string `json:"contractNo" dc:"合同唯一编码"`
+	WithdrawReason   string `json:"withdrawReason" dc:"撤销原因，最多50字"`
+	IsNoticeSignUser bool   `json:"isNoticeSignUser" dc:"是否短信通知签署用户，true 通知false不通知，默认不通知"`
+}
+type WithdrawContractResBody struct{}
+
 // 查询合同状态 Req https://preweb.asign.cn/platform/openDoc/docDetail?mid=status
 type GetContractStatusReqBody struct {
 	ContractNo string `json:"contractNo" dc:"合同唯一编码"`
